@@ -31,6 +31,15 @@
             100% { background-position: 0% 50%; }
         }
 
+        .header-text {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+            max-width: 80%;
+        }
+
         .progress-container {
             width: 80%;
             max-width: 800px;
@@ -155,7 +164,14 @@
     </style>
 </head>
 <body>
-    
+
+    <div class="header-text">
+        Министерство цифрового развития, связи и массовых коммуникаций РФ <br>
+        Уральский технический институт связи и информатики (филиал) <br>
+        ФГБОУ ВО "Сибирский государственный университет телекоммуникации и информатики" в г. Екатеринбурге <br>
+        (УртИСиСибГУТИ)
+    </div>
+
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
@@ -231,14 +247,13 @@
             </div>
             <img src="report.png" class="profile-image">
         </div>
-        <div class="card" id="card5">
+        <div class="card" id="card6">
             <div class="text">
                 <h1 class="name">Практическая часть</h1>
                 <p class="title">Брут ssh пароля</p>
                 <button class="button" onclick="location.href='practic.html'">Начать</button>
             </div>
         </div>
-
     </div>
 
     <div class="button-container">
