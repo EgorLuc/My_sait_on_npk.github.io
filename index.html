@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НПК</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(200deg, #FF5733, #33FF57, #3357FF, #FF33A8);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .progress-container {
+            width: 80%;
+            max-width: 800px;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #007BFF;
+            border-radius: 5px;
+            transition: width 0.5s;
+        }
+
+        .card-container {
+            position: relative;
+            width: 80%; 
+            max-width: 800px; 
+            height: 400px; 
+            overflow: hidden;
+        }
+
+        .card {
+            position: absolute;
+            width: 100%; 
+            padding: 40px; 
+            background-color: #f0f0f0;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            opacity: 0; 
+            transform: translateY(0);
+            transition: opacity 0.5s ease;
+        }
+
+        .card.active {
+            opacity: 1; 
+            z-index: 1; 
+        }
+
+        .card.melt {
+            animation: melt 0.5s forwards; 
+        }
+
+        @keyframes melt {
+            0% { transform: scale(1) translateY(0); opacity: 1; }
+            100% { transform: scale(1, 0) translateY(100%); opacity: 0; }
+        }
+
+        .profile-image {
+            width: 150px; 
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 30px; 
+            border: 2px solid #007BFF;
+            transition: transform 0.3s;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .text {
+            flex: 1; 
+        }
+
+        .name {
+            font-size: 36px; 
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .title {
+            font-size: 24px; 
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            font-size: 16px; 
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .contact {
+            font-size: 16px; 
+            color: #007BFF;
+        }
+
+        .contact a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        .button-container {
+            margin: 20px;
+        }
+
+        .button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="card-container">
+        <div class="card active" id="card1">
+            <div class="text">
+                <h1 class="name">Пентест как метод выявления уязвимостей</h1>
+                <p class="title">Узнайте, что такое тестирование на проникновение (пентест) и почему оно важно.</p>
+                <p class="info">Цель: найти уязвимости до того, как это сделают злоумышленники.</p>
+                <p class="contact">Выполнил: Луканин Е. В. гр 386</p>
+                <p class="contact">Руководитель: Пупышев А. В.</p>
+            </div>
+            <img src="pentest.png" class="profile-image">
+        </div>
+
+        <div class="card" id="card2">
+            <img src="OSINT.png" class="profile-image">
+            <div class="text">
+                <h1 class="name">Этап 1: Планирование</h1>
+                <p class="title">Определение объема и целей пентеста</p>
+                <p class="info">На этом этапе команда пентестеров и заказчик определяют цель тестирования, его масштаб и ограничения. Это может включать в себя:</p>
+                <ul class="info">
+                    <li>Выбор систем или сетей для тестирования;</li>
+                    <li>Определение методов и инструментов;</li>
+                    <li>Установление четких правил взаимодействия;</li>
+                    <li>Согласование ожидаемых результатов и требований к отчету.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" id="card3">
+            <div class="text">
+                <h1 class="name">Этап 2: Сканирование</h1>
+                <p class="title">Сбор информации и анализ уязвимостей</p>
+                <p class="info">На этапе сканирования пентестеры собирают информацию о целевых системах, используя различные инструменты. Это включает:</p>
+                <ul class="info">
+                    <li>Сетевое сканирование для выявления открытых портов;</li>
+                    <li>Сканирование уязвимостей для обнаружения известных слабостей;</li>
+                    <li>Passive и Active reconnaissance для сбора информации о системе.</li>
+                </ul>
+                <p>Основная цель — получить полное представление о целевой системе и её уязвимостях.</p>
+            </div>
+            <img src="scaner.png" class="profile-image">
+        </div>
+
+        <div class="card" id="card4">
+            <img src="metasploit.png" class="profile-image">
+            <div class="text">
+                <h1 class="name">Этап 3: Эксплуатация</h1>
+                <p class="title">Использование уязвимостей</p>
+                <p class="info">На данном этапе тестировщики используют выявленные уязвимости для получения доступа к системе.</p>
+                <ul class="info">
+                    <li>Классические атаки, например, SQL-инъекции или внедрение кода;</li>
+                    <li>Атаки на пароли для доступа к учетным записям;</li>
+                    <li>Использование эксплойтов для повышения привилегий.</li>
+                </ul>
+                <p>Цель - определить, насколько хорошо система защищена и какие данные могут быть скомпрометированы.</p>
+            </div>
+        </div>
+
+        <div class="card" id="card5">
+            <div class="text">
+                <h1 class="name">Этап 4: Отчетность</h1>
+                <p class="title">Составление отчета</p>
+                <p class="info">После завершения тестирования пентестеры составляют подробный отчет, который включает:</p>
+                <ul class="info">
+                    <li>Описание методов, используемых для тестирования;</li>
+                    <li>Выявленные уязвимости и степень их серьезности;</li>
+                    <li>Рекомендации по исправлению и улучшению безопасности.</li>
+                </ul>
+                <p>Отчет должен быть понятным и доступным для всех участников процесса, включая технический и нетехнический персонал.</p>
+            </div>
+            <img src="report.png" class="profile-image">
+        </div>
+        <div class="card" id="card5">
+            <div class="text">
+                <h1 class="name">Практическая часть</h1>
+                <p class="title">Брут ssh пароля</p>
+                <button class="button" onclick="location.href='practic.html'">Начать</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="button-container">
+        <button class="button" id="nextButton">Вперед</button>
+    </div>
+
+    <script>
+        let currentCardIndex = 0;
+        const cards = document.querySelectorAll('.card');
+        const progressBar = document.getElementById('progressBar');
+
+        function updateProgressBar() {
+            const progress = ((currentCardIndex + 1) / cards.length) * 100; 
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function meltAndShowNextCard() {
+            const currentCard = cards[currentCardIndex];
+            currentCard.classList.add('melt'); 
+
+            setTimeout(() => {
+                currentCard.classList.remove('active', 'melt'); 
+                currentCardIndex = (currentCardIndex + 1) % cards.length; 
+                const nextCard = cards[currentCardIndex];
+                nextCard.classList.add('active'); 
+                updateProgressBar(); 
+            }, 500); 
+        }
+
+        document.getElementById('nextButton').addEventListener('click', meltAndShowNextCard);
+        updateProgressBar(); 
+    </script>
+</body>
+</html>
